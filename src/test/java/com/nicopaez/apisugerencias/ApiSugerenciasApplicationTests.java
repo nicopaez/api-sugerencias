@@ -5,6 +5,9 @@ import com.maciejwalkowiak.wiremock.spring.ConfigureWireMock;
 import com.maciejwalkowiak.wiremock.spring.EnableWireMock;
 import com.maciejwalkowiak.wiremock.spring.InjectWireMock;
 import com.nicopaez.apisugerencias.dtos.SugerenciaResponse;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 		"openweather.baseurl",
 		"app.client-apis.bar.base-path",
 		"app.client-apis.mojo.base-path"}))
-class ApiSugerenciasApplicationTest {
+class ApiSugerenciasApplicationTests {
 
 	@InjectWireMock("default")
 	private WireMockServer wiremock;

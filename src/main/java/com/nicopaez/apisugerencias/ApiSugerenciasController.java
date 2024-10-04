@@ -1,6 +1,5 @@
 package com.nicopaez.apisugerencias;
 
-import com.nicopaez.apisugerencias.dominio.ProveedorTemperatura;
 import com.nicopaez.apisugerencias.dominio.ServicioSugerencias;
 import com.nicopaez.apisugerencias.dominio.Vestimenta;
 import com.nicopaez.apisugerencias.dtos.SugerenciaResponse;
