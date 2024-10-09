@@ -5,9 +5,7 @@ import com.maciejwalkowiak.wiremock.spring.ConfigureWireMock;
 import com.maciejwalkowiak.wiremock.spring.EnableWireMock;
 import com.maciejwalkowiak.wiremock.spring.InjectWireMock;
 import com.nicopaez.apisugerencias.dtos.SugerenciaResponse;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -45,10 +43,18 @@ class ApiSugerenciasApplicationTests {
 
 	@Test
 	public void getSugerenciasDeberiaDevolverVestimentaSurgerida() throws Exception {
+		configurarSimuladorProveedorTemperatura();
+		String vestimentaSugerida = this.restTemplate.getForObject(getUrl(), SugerenciaResponse.class).vestimentaSugerida;
+		assertThat(vestimentaSugerida).isEqualTo("Remera");
+	}
+
+	private @NotNull String getUrl() {
+		String url = "http://localhost:" + port + "/api/sugerencias";
+		return url;
+	}
+
+	private void configurarSimuladorProveedorTemperatura() {
 		this.wiremock.stubFor(get(urlEqualTo("/?lat=45&lon=36&APPID=null"))
 				.willReturn(okJson(OPEN_WEATHER_JSON_RESPONSE)));
-		String url = "http://localhost:" + port + "/api/sugerencias";
-		String vestimentaSugerida = this.restTemplate.getForObject(url, SugerenciaResponse.class).vestimentaSugerida;
-		assertThat(vestimentaSugerida).isEqualTo("Remera");
 	}
 }
