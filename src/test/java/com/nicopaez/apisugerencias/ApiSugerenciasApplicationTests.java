@@ -49,8 +49,7 @@ class ApiSugerenciasApplicationTests {
 	}
 
 	private @NotNull String getUrl() {
-		String url = "http://localhost:" + port + "/api/sugerencias";
-		return url;
+		return "http://localhost:" + port + "/api/sugerencias";
 	}
 
 	private void configurarSimuladorProveedorTemperatura() {
