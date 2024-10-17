@@ -1,0 +1,9 @@
+services:
+
+  wiremock:
+    image: wiremock/wiremock:2.32.0
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./mappings:/home/wiremock/mappings
+      - ./responses:/home/wiremock/__files/responses

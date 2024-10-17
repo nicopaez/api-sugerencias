@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPattern": "/weather/.*"
+    },
+    "response": {
+        "status": 200,
+        "headers" : {
+            "content-type" : "application/json"
+        },
+        "bodyFileName": "responses/openweather_response.json"
+    }
+}
