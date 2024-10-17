@@ -9,7 +9,7 @@ public class ServicioSugerencias {
     }
 
     public Vestimenta sugerirVestimenta() {
-        if (this.proveedorTemperatura.getTemperatura() >= 30)
+        if (this.proveedorTemperatura.getTemperaturaEnCelcius() >= 30)
             return Vestimenta.Remera;
         return Vestimenta.Polera;
     }

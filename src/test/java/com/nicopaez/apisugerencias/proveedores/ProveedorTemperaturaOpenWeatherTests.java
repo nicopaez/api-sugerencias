@@ -10,9 +10,9 @@ public class ProveedorTemperaturaOpenWeatherTests {
 
     @Test @Disabled
     public void deberiaLlamarAOpenWeatherYDevolverLaTemperatura() {
-        String openweatherBaseUrl = "http://api.openweathermap.org/data/2.5/weather";
+        String openweatherBaseUrl =  "http://api.openweathermap.org/data/2.5/weather"; //"http://localhost:8081/weather/";
         ProveedorTemperatura proveedorTemperatura = new ProveedorTemperaturaOpenWeather(openweatherBaseUrl);
-        Integer temperatura = proveedorTemperatura.getTemperatura();
+        Integer temperatura = proveedorTemperatura.getTemperaturaEnCelcius();
         assertThat(temperatura).isNotNull();
     }
 }

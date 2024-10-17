@@ -11,7 +11,8 @@ public class ServicioSugerenciasTest {
     @Test
     public void cuandoTemperaturaMenorA30SurgierePolera() {
         ProveedorTemperatura provedorTemperatura = mock(ProveedorTemperatura.class);
-        when(provedorTemperatura.getTemperatura()).thenReturn(29);
+        when(provedorTemperatura.getTemperaturaEnCelcius()).thenReturn(29);
+
         ServicioSugerencias sistema = new ServicioSugerencias(provedorTemperatura);
 
         Vestimenta vestimentaSugerida = sistema.sugerirVestimenta();
@@ -22,7 +23,7 @@ public class ServicioSugerenciasTest {
     @Test
     public void cuandoTemperaturaMayorIgualA30SurgiereRemera() {
         ProveedorTemperatura provedorTemperatura = mock(ProveedorTemperatura.class);
-        when(provedorTemperatura.getTemperatura()).thenReturn(31);
+        when(provedorTemperatura.getTemperaturaEnCelcius()).thenReturn(31);
         ServicioSugerencias sistema = new ServicioSugerencias(provedorTemperatura);
 
         Vestimenta vestimentaSugerida = sistema.sugerirVestimenta();

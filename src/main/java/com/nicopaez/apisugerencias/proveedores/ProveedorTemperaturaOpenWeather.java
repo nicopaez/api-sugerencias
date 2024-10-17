@@ -19,7 +19,7 @@ public class ProveedorTemperaturaOpenWeather implements ProveedorTemperatura {
         this.openweatherBaseurl = openweatherBaseurl;
     }
     @Override
-    public Integer getTemperatura() throws RuntimeException {
+    public Integer getTemperaturaEnCelcius() throws RuntimeException {
         OkHttpClient client = new OkHttpClient();
         ObjectMapper mapper = new ObjectMapper();
 
@@ -37,8 +37,9 @@ public class ProveedorTemperaturaOpenWeather implements ProveedorTemperatura {
             Response response = client.newCall(request).execute();
                 ObjectReader reader = mapper.readerFor(Map.class);
                 result = reader.readValue(response.body().string());
-            String temperature = result.get("main").get("temp").toString();
-            return (int)Float.parseFloat(temperature);
+            String temperaturaEnKelvin = result.get("main").get("temp").toString();
+            Float temperaturaEnCelcius = Float.parseFloat(temperaturaEnKelvin) - 273.15F;
+            return temperaturaEnCelcius.intValue();
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
