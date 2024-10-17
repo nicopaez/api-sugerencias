@@ -7,7 +7,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class ProveedorTemperaturaOpenWeather implements ProveedorTemperatura {
@@ -38,8 +37,8 @@ public class ProveedorTemperaturaOpenWeather implements ProveedorTemperatura {
                 ObjectReader reader = mapper.readerFor(Map.class);
                 result = reader.readValue(response.body().string());
             String temperaturaEnKelvin = result.get("main").get("temp").toString();
-            Float temperaturaEnCelcius = Float.parseFloat(temperaturaEnKelvin) - 273.15F;
-            return temperaturaEnCelcius.intValue();
+            float temperaturaEnCelcius = Float.parseFloat(temperaturaEnKelvin) - 273.15F;
+            return (int) temperaturaEnCelcius;
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
